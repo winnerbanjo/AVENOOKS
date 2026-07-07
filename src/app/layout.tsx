@@ -3,6 +3,8 @@ import './globals.css';
 import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Toast from './components/Toast';
+import CartDrawer from './components/CartDrawer';
 
 import type { Viewport } from 'next';
 
@@ -30,6 +32,8 @@ export default function RootLayout({
             <main style={{ flex: 1 }}>{children}</main>
             <Footer />
           </div>
+          <CartDrawer />
+          <Toast />
         </CartProvider>
       </body>
     </html>

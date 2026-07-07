@@ -7,7 +7,7 @@ import { useCart } from '../context/CartContext';
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const { getCartCount } = useCart();
+  const { getCartCount, setIsDrawerOpen } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -39,10 +39,10 @@ const Navbar: React.FC = () => {
         </nav>
 
         <div className="nav-actions">
-          <Link href="/menu" className="btn btn-icon" aria-label="Cart">
+          <button onClick={() => setIsDrawerOpen(true)} className="btn btn-icon" aria-label="Cart">
             🛒
             {getCartCount() > 0 && <span className="cart-badge">{getCartCount()}</span>}
-          </Link>
+          </button>
           <Link href="/menu" className="btn btn-primary hero-image-desktop-only" style={{ padding: '8px 20px', fontSize: '12px' }}>
             Order Online
           </Link>

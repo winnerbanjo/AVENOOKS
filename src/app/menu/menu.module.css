@@ -1,13 +1,5 @@
 .menuLayout {
-  display: grid;
-  grid-template-columns: 1fr 350px;
-  gap: 40px;
   padding: 60px 0;
-  align-items: start;
-}
-
-.menuContent {
-  width: 100%;
 }
 
 .headerArea {

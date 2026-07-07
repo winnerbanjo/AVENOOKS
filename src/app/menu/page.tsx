@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { useCart } from '../context/CartContext';
 import styles from './menu.module.css';
 
@@ -30,7 +29,7 @@ const CATEGORY_MAP: Record<string, string> = {
 function MenuContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { addToCart, cart, updateQuantity, removeFromCart, getCartSubtotal, getCartCount } = useCart();
+  const { addToCart } = useCart();
 
   const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -110,181 +109,89 @@ function MenuContent() {
   return (
     <div className="container">
       <div className={styles.menuLayout}>
-        {/* Left Side: Menu Grid */}
-        <div className={styles.menuContent}>
-          <div className={styles.headerArea}>
-            <h1 className={styles.title}>Our Delicious Menu</h1>
-            <p className={styles.subtitle}>Nutritious, fresh, and health-conscious items prepared just for you.</p>
-          </div>
+        <div className={styles.headerArea}>
+          <h1 className={styles.title}>Our Delicious Menu</h1>
+          <p className={styles.subtitle}>Nutritious, fresh, and health-conscious items prepared just for you.</p>
+        </div>
 
-          {/* Search bar */}
-          <div className={styles.searchFilterBar}>
-            <div className={styles.searchWrapper}>
-              <span className={styles.searchIcon}>🔍</span>
-              <input
-                type="text"
-                placeholder="Search food menu (e.g. Oha soup, coconut rice)..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className={styles.searchInput}
-              />
-            </div>
+        {/* Search bar */}
+        <div className={styles.searchFilterBar}>
+          <div className={styles.searchWrapper}>
+            <span className={styles.searchIcon}>🔍</span>
+            <input
+              type="text"
+              placeholder="Search food menu (e.g. Oha soup, coconut rice)..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={styles.searchInput}
+            />
           </div>
+        </div>
 
-          {/* Category Tabs */}
-          <div className={styles.categoriesWrapper}>
+        {/* Category Tabs */}
+        <div className={styles.categoriesWrapper}>
+          <button
+            onClick={() => handleCategorySelect('ALL')}
+            className={`${styles.categoryTab} ${categoryParam === 'ALL' ? styles.categoryTabActive : ''}`}
+          >
+            All Items
+          </button>
+          {Object.keys(CATEGORY_MAP).map((catCode) => (
             <button
-              onClick={() => handleCategorySelect('ALL')}
-              className={`${styles.categoryTab} ${categoryParam === 'ALL' ? styles.categoryTabActive : ''}`}
+              key={catCode}
+              onClick={() => handleCategorySelect(catCode)}
+              className={`${styles.categoryTab} ${categoryParam === catCode ? styles.categoryTabActive : ''}`}
             >
-              All Items
+              {CATEGORY_MAP[catCode]}
             </button>
-            {Object.keys(CATEGORY_MAP).map((catCode) => (
-              <button
-                key={catCode}
-                onClick={() => handleCategorySelect(catCode)}
-                className={`${styles.categoryTab} ${categoryParam === catCode ? styles.categoryTabActive : ''}`}
-              >
-                {CATEGORY_MAP[catCode]}
-              </button>
+          ))}
+        </div>
+
+        {/* Items Grid */}
+        {filteredItems.length === 0 ? (
+          <div className={styles.cartEmpty}>
+            <div className={styles.cartEmptyIcon}>🍽️</div>
+            <h3>No items found</h3>
+            <p>Try searching for something else or changing the category filter.</p>
+          </div>
+        ) : (
+          <div className={styles.itemsGrid}>
+            {filteredItems.map((item) => (
+              <div key={item._id} className={`${styles.itemCard} animate-scale`}>
+                <div className={styles.itemImageWrapper}>
+                  {item.isBestseller && <span className={styles.itemBestsellerBadge}>Bestseller</span>}
+                  <span className={styles.itemBadge}>{CATEGORY_MAP[item.category] || item.category}</span>
+                  {item.imageUrl ? (
+                    <img 
+                      src={item.imageUrl} 
+                      alt={item.name} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    />
+                  ) : (
+                    <div className={styles.itemImagePlaceholder}>
+                      {getCategoryImage(item.category)}
+                    </div>
+                  )}
+                </div>
+                <div className={styles.itemDetails}>
+                  <h3 className={styles.itemName}>{item.name}</h3>
+                  <p className={styles.itemDesc}>{item.description}</p>
+                  <div className={styles.itemFooter}>
+                    <span className={styles.itemPrice}>{formatPrice(item.price)}</span>
+                    <button
+                      onClick={() => addToCart({ id: item._id, name: item.name, price: item.price, category: item.category })}
+                      className="btn btn-primary"
+                      style={{ padding: '8px 16px', fontSize: '12px' }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
-
-          {/* Items Grid */}
-          {filteredItems.length === 0 ? (
-            <div className={styles.cartEmpty}>
-              <div className={styles.cartEmptyIcon}>🍽️</div>
-              <h3>No items found</h3>
-              <p>Try searching for something else or changing the category filter.</p>
-            </div>
-          ) : (
-            <div className={styles.itemsGrid}>
-              {filteredItems.map((item) => (
-                <div key={item._id} className={`${styles.itemCard} animate-scale`}>
-                  <div className={styles.itemImageWrapper}>
-                    {item.isBestseller && <span className={styles.itemBestsellerBadge}>Bestseller</span>}
-                    <span className={styles.itemBadge}>{CATEGORY_MAP[item.category] || item.category}</span>
-                    {item.imageUrl ? (
-                      <img 
-                        src={item.imageUrl} 
-                        alt={item.name} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                      />
-                    ) : (
-                      <div className={styles.itemImagePlaceholder}>
-                        {getCategoryImage(item.category)}
-                      </div>
-                    )}
-                  </div>
-                  <div className={styles.itemDetails}>
-                    <h3 className={styles.itemName}>{item.name}</h3>
-                    <p className={styles.itemDesc}>{item.description}</p>
-                    <div className={styles.itemFooter}>
-                      <span className={styles.itemPrice}>{formatPrice(item.price)}</span>
-                      <button
-                        onClick={() => addToCart({ id: item._id, name: item.name, price: item.price, category: item.category })}
-                        className="btn btn-primary"
-                        style={{ padding: '8px 16px', fontSize: '12px' }}
-                      >
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Right Side: Cart Summary */}
-        <aside id="checkout-sidebar" className={styles.cartPanel}>
-          <div className={styles.cartHeader}>
-            <h2 className={styles.cartTitle}>Your Order</h2>
-            <span className={styles.cartCount}>{getCartCount()} items</span>
-          </div>
-
-          {cart.length === 0 ? (
-            <div className={styles.cartEmpty}>
-              <div className={styles.cartEmptyIcon}>🛒</div>
-              <h3>Cart is empty</h3>
-              <p>Add some healthy delicacies from our menu to start your order.</p>
-            </div>
-          ) : (
-            <div>
-              <div className={styles.cartList}>
-                {cart.map((cartItem) => (
-                  <div key={cartItem.id} className={styles.cartItem}>
-                    <div className={styles.cartItemDetails}>
-                      <h4 className={styles.cartItemName}>{cartItem.name}</h4>
-                      <span className={styles.cartItemPrice}>{formatPrice(cartItem.price * cartItem.quantity)}</span>
-                      <div className={styles.cartItemActions}>
-                        <button
-                          onClick={() => updateQuantity(cartItem.id, cartItem.quantity - 1)}
-                          className={styles.qtyBtn}
-                        >
-                          -
-                        </button>
-                        <span className={styles.qtyVal}>{cartItem.quantity}</span>
-                        <button
-                          onClick={() => updateQuantity(cartItem.id, cartItem.quantity + 1)}
-                          className={styles.qtyBtn}
-                        >
-                          +
-                        </button>
-                        <button
-                          onClick={() => removeFromCart(cartItem.id)}
-                          className={styles.removeBtn}
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className={styles.cartSummary}>
-                <div className={styles.summaryRow}>
-                  <span className={styles.subtotalLabel}>Subtotal</span>
-                  <span className={styles.subtotalVal}>{formatPrice(getCartSubtotal())}</span>
-                </div>
-                <p style={{ fontSize: '11px', color: 'var(--color-gray-dark)', marginBottom: '16px' }}>
-                  * Delivery fee is calculated upon checkout.
-                </p>
-                <Link href="/checkout" className="btn btn-primary checkoutBtn">
-                  Proceed to Checkout
-                </Link>
-              </div>
-            </div>
-          )}
-        </aside>
+        )}
       </div>
-
-      {/* Sticky Bottom Mobile Cart Bar */}
-      {cart.length > 0 && (
-        <div className="mobileCartBar">
-          <div className="mobileCartInfo">
-            <span className="mobileCartBadge">{getCartCount()}</span>
-            <div>
-              <div style={{ fontSize: '10px', opacity: 0.8 }}>Total Payment</div>
-              <div className="mobileCartTotal">{formatPrice(getCartSubtotal())}</div>
-            </div>
-          </div>
-          <button 
-            onClick={() => {
-              const element = document.getElementById('checkout-sidebar');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                router.push('/checkout');
-              }
-            }}
-            className="mobileCartBtn"
-          >
-            View Order &rarr;
-          </button>
-        </div>
-      )}
     </div>
   );
 }

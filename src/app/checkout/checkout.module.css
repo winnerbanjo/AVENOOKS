@@ -1,0 +1,238 @@
+.checkoutLayout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  padding: 60px 0;
+  align-items: start;
+}
+
+.titleArea {
+  margin-bottom: 40px;
+}
+
+.checkoutForm {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 40px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 12px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.fullWidth {
+  grid-column: span 2;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-gray-dark);
+}
+
+.toggleContainer {
+  display: flex;
+  background-color: var(--color-gray-light);
+  padding: 4px;
+  border-radius: 30px;
+  margin-bottom: 32px;
+}
+
+.toggleBtn {
+  flex: 1;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.toggleBtnActive {
+  background-color: var(--color-wine-red);
+  color: var(--color-white);
+}
+
+/* Payment Details styling */
+.bankDetailsCard {
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-gold);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.bankRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--color-gray-medium);
+  font-size: 14px;
+}
+
+.bankRow:last-child {
+  border-bottom: none;
+}
+
+/* Upload Receipt styles */
+.uploadWrapper {
+  border: 2px dashed var(--color-gray-medium);
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.uploadWrapper:hover {
+  border-color: var(--color-wine-red);
+}
+
+.uploadWrapperActive {
+  border-color: var(--color-success);
+  background-color: rgba(46, 125, 50, 0.03);
+}
+
+.uploadIcon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.uploadText {
+  font-size: 14px;
+  color: var(--color-gray-dark);
+}
+
+.uploadText span {
+  color: var(--color-wine-red);
+  font-weight: 600;
+}
+
+.fileInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Order Summary Box */
+.summaryBox {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 32px;
+  position: sticky;
+  top: 100px;
+}
+
+.summaryHeader {
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.summaryTitle {
+  font-size: 20px;
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 20px;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.summaryItemQty {
+  color: var(--color-gray-dark);
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.priceLabel {
+  font-weight: 600;
+}
+
+.totalsArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.totalsRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: 16px;
+  margin-top: 8px;
+}
+
+.totalVal {
+  color: var(--color-wine-red);
+}
+
+.orderBtn {
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* Responsive adjust */
+@media (max-width: 968px) {
+  .checkoutLayout {
+    grid-template-columns: 1fr;
+  }
+  .summaryBox {
+    position: static;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .fullWidth {
+    grid-column: span 1;
+  }
+  .checkoutForm {
+    padding: 24px;
+  }
+}

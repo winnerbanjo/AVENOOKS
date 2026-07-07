@@ -1,0 +1,308 @@
+.adminLayout {
+  padding: 60px 0;
+}
+
+.loginCard {
+  max-width: 400px;
+  margin: 100px auto;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  padding: 40px;
+  text-align: center;
+}
+
+.loginTitle {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.loginDesc {
+  color: var(--color-gray-dark);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 20px;
+}
+
+.dashboardTitle {
+  font-size: 36px;
+}
+
+.tabsContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 1px;
+}
+
+.tabBtn {
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  color: var(--color-gray-dark);
+}
+
+.tabBtnActive {
+  color: var(--color-wine-red);
+  border-bottom-color: var(--color-wine-red);
+}
+
+/* Orders List View */
+.ordersGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.orderCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 32px;
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.orderId {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-wine-red);
+}
+
+.orderDate {
+  font-size: 13px;
+  color: var(--color-gray-dark);
+}
+
+.orderStatusGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.statusSelect {
+  padding: 8px 12px;
+  font-size: 13px;
+  width: auto;
+}
+
+.orderBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.customerInfo h4,
+.itemsOrdered h4 {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  color: var(--color-gray-dark);
+}
+
+.infoRow {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.infoRow strong {
+  color: var(--color-black);
+}
+
+.itemsListTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.itemsListTable th {
+  text-align: left;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-gray-light);
+  color: var(--color-gray-dark);
+  font-weight: 600;
+}
+
+.itemsListTable td {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--color-gray-light);
+}
+
+.receiptThumbnail {
+  width: 100%;
+  max-width: 150px;
+  height: 100px;
+  border-radius: 4px;
+  border: 1px solid var(--color-gray-medium);
+  object-fit: cover;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* Modal Receipt Viewer */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.modalContent {
+  background-color: var(--color-white);
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+  margin: 20px 0;
+}
+
+/* Menu Management Section */
+.menuAdminLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.addItemCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  width: auto;
+}
+
+.menuItemsTableWrapper {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.menuTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.menuTable th {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--color-gray-light);
+  color: var(--color-gray-dark);
+}
+
+.menuTable td {
+  padding: 12px;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.deleteBtn {
+  color: var(--color-error);
+  font-weight: 600;
+}
+
+.deleteBtn:hover {
+  text-decoration: underline;
+}
+
+.editBtn {
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.editBtn:hover {
+  text-decoration: underline;
+}
+
+/* Status Badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.badgePending { background-color: #ffe0b2; color: #e65100; }
+.badgeConfirmed { background-color: #e1f5fe; color: #01579b; }
+.badgePreparing { background-color: #e8f5e9; color: #1b5e20; }
+.badgeDelivered { background-color: #f3e5f5; color: #4a148c; }
+.badgeCompleted { background-color: #c8e6c9; color: #2e7d32; }
+.badgeCancelled { background-color: #ffcdd2; color: #c62828; }
+
+@media (max-width: 968px) {
+  .orderBody {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .menuAdminLayout {
+    grid-template-columns: 1fr;
+  }
+}

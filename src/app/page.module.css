@@ -1,0 +1,361 @@
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-black) 40%, var(--color-wine-red-dark) 100%);
+  color: var(--color-white);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(197, 168, 128, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+.tagline {
+  color: var(--color-gold);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.title {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.title span {
+  color: var(--color-gold);
+}
+
+.description {
+  font-size: 18px;
+  color: var(--color-gray-medium);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: 16px;
+}
+
+/* About Section */
+.about {
+  padding: 100px 0;
+  background-color: var(--color-white);
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.aboutImgWrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-gray-light);
+}
+
+.aboutImg {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.aboutSubtitle {
+  color: var(--color-wine-red);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.aboutTitle {
+  font-size: 40px;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.aboutText {
+  color: var(--color-gray-dark);
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+/* Values Highlights */
+.highlights {
+  padding: 60px 0;
+  background-color: var(--color-cream);
+  border-top: 1px solid var(--color-gray-light);
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.highlightCard {
+  background: var(--color-white);
+  padding: 40px 32px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: var(--transition-smooth);
+}
+
+.highlightCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-gold);
+}
+
+.highlightIcon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.highlightCard h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.highlightCard p {
+  color: var(--color-gray-dark);
+  font-size: 14px;
+}
+
+/* Categories Section */
+.categoriesSection {
+  padding: 100px 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px auto;
+}
+
+.sectionSubtitle {
+  color: var(--color-wine-red);
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  font-size: 36px;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.categoryCard {
+  position: relative;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+.categoryOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  transition: var(--transition-smooth);
+}
+
+.categoryCard:hover .categoryOverlay {
+  background: linear-gradient(to top, rgba(107, 13, 30, 0.9) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.categoryName {
+  color: var(--color-white);
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.categoryLinkText {
+  color: var(--color-gold);
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 100px 0;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 60px;
+}
+
+.testimonialCard {
+  background-color: var(--color-black-light);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 40px 32px;
+  position: relative;
+}
+
+.testimonialQuote {
+  font-size: 15px;
+  color: var(--color-gray-medium);
+  margin-bottom: 24px;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.authorAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-wine-red);
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.authorName {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.authorRole {
+  color: var(--color-gold);
+  font-size: 12px;
+}
+
+/* Info Banner Section */
+.infoSection {
+  padding: 100px 0;
+  background-color: var(--color-cream);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+}
+
+.infoMapWrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-gray-light);
+  height: 400px;
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detailItem {
+  display: flex;
+  gap: 20px;
+}
+
+.detailIcon {
+  font-size: 24px;
+  color: var(--color-wine-red);
+  margin-top: 4px;
+}
+
+.detailItem h4 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.detailItem p {
+  color: var(--color-gray-dark);
+  font-size: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .highlightsGrid {
+    grid-template-columns: 1fr;
+  }
+  .categoryGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .testimonialGrid {
+    grid-template-columns: 1fr;
+  }
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .categoryGrid {
+    grid-template-columns: 1fr;
+  }
+  .ctaGroup {
+    flex-direction: column;
+  }
+}
